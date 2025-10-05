@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types"; 
 import Img1 from "../../assets/books/book2.jpg";
 import Img2 from "../../assets/books/book1.jpg";
@@ -6,27 +5,9 @@ import Img3 from "../../assets/books/book3.jpg";
 import { FaStar } from "react-icons/fa";
 
 const ServicesData = [
-  {
-    id: 1,
-    img: Img1,
-    title: "His Life",
-    description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  {
-    id: 2,
-    img: Img2,
-    title: "Who's there",
-    description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  {
-    id: 3,
-    img: Img3,
-    title: "Lost Boy",
-    description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
+  { id: 1, img: Img1, title: "His Life", description: "lorem ipsum dolor sit amet..." },
+  { id: 2, img: Img2, title: "Who's there", description: "lorem ipsum dolor sit amet..." },
+  { id: 3, img: Img3, title: "Lost Boy", description: "lorem ipsum dolor sit amet..." },
 ];
 
 const Services = ({ handleOrderPopup }) => {
@@ -42,14 +23,13 @@ const Services = ({ handleOrderPopup }) => {
             <h1 className="text-3xl font-bold">Best Books</h1>
             <p className="text-xs text-gray-400">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Perspiciatis delectus architecto error nesciunt,
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-20 md:gap-5 place-items-center">
             {ServicesData.map((service) => (
               <div
-                key={service.id} 
+                key={service.id}
                 data-aos="zoom-in"
                 className="rounded-2xl bg-white dark:bg-gray-800 hover:bg-primary dark:hover:bg-primary hover:text-white relative shadow-xl duration-high group max-w-[300px]"
               >
@@ -65,6 +45,7 @@ const Services = ({ handleOrderPopup }) => {
                   <div className="w-full flex items-center justify-center gap-1">
                     {[...Array(4)].map((_, index) => (
                       <FaStar key={index} className="text-yellow-500" />
+                    ))}
                   </div>
 
                   <h1 className="text-xl font-bold">{service.title}</h1>
