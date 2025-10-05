@@ -6,7 +6,6 @@ import Banner from "./components/Banner/Banner.jsx";
 import AppStore from "./components/AppStore/AppStore.jsx";
 import Testimonial from "./components/Testimonial/Testimonial.jsx";
 import ContactSection from "./components/ContactSection/ContactSection";
-
 import Footer from "./components/Footer/Footer.jsx";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -31,30 +30,41 @@ const App = () => {
   }, []);
 
   return (
-  <div className="bg-white dark:bg-gray-900 dark:text-white duration-200">
-    <Navbar handleOrderPopup={handleOrderPopup} />
+    <div className="bg-white dark:bg-gray-900 dark:text-white duration-200">
+      <Navbar handleOrderPopup={handleOrderPopup} />
 
-    <section id="home">
-      <Hero handleOrderPopup={handleOrderPopup} />
-    </section>
+      <section id="home">
+        <Hero handleOrderPopup={handleOrderPopup} />
+      </section>
 
-    <section id="services">
-      <Services handleOrderPopup={handleOrderPopup} />
-    </section>
+      <section id="services">
+        <Services handleOrderPopup={handleOrderPopup} />
+      </section>
 
-    <section id="books">
-      <Books />
-    </section>
+      <section id="banner">
+        <Banner />
+      </section>
 
-    <section id="contact US">
-      <ContactSection />
-    </section>
+      <section id="books">
+        <Books />
+      </section>
 
-    <Footer />
-    <OrderPopup orderPopup={orderPopup} setOrderPopup={setOrderPopup} />
-  </div>
-);
+      <section id="appstore">
+        <AppStore />
+      </section>
 
+      <section id="testimonial">
+        <Testimonial />
+      </section>
+
+      <section id="contact">
+        <ContactSection />
+      </section>
+
+      <Footer />
+      <OrderPopup orderPopup={orderPopup} setOrderPopup={setOrderPopup} />
+    </div>
+  );
 };
 
 export default App;

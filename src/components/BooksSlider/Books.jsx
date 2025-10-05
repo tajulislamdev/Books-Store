@@ -16,9 +16,9 @@ const booksData = [
 ];
 
 const Books = () => {
-  // Example function for button click
+
   const handleViewAll = () => {
-    alert("Redirect to All Books Page"); // এখানে চাইলে React Router দিয়ে navigate করতে পারবে
+    alert("Redirect to All Books Page"); 
   };
 
   return (
