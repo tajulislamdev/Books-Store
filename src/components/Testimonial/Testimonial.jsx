@@ -7,21 +7,22 @@ const testimonialData = [
     id: 1,
     name: "Victor",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque reiciendis inventore iste ratione ex alias quis magni at optio",
-    img: "https://picsum.photos/101/101",
+    img: "https://images.pexels.com/photos/3019260/pexels-photo-3019260.jpeg", 
   },
   {
     id: 2,
     name: "Satya Narayan",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque reiciendis inventore iste ratione ex alias quis magni at optio",
-    img: "https://picsum.photos/102/102",
+    img: "https://images.pexels.com/photos/374909/pexels-photo-374909.jpeg", 
   },
   {
     id: 3,
     name: "Sachin Tendulkar",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque reiciendis inventore iste ratione ex alias quis magni at optio",
-    img: "https://picsum.photos/103/103",
+    img: "https://images.pexels.com/photos/753626/pexels-photo-753626.jpeg", 
   },
 ];
+
 
 const Testimonial = () => {
   const settings = {
