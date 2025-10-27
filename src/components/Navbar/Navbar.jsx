@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Logo from "../../assets/website/logo.png";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaSearch, FaCaretDown, FaBars, FaTimes } from "react-icons/fa";
-
 import DarkMode from "./DarkMode"; // সঠিক path
 
 const Menu = [
@@ -20,10 +19,32 @@ const DropdownLinks = [
 
 const Navbar = ({ handleOrderPopup }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "auto";
   }, [menuOpen]);
+
+  // Search API call
+  useEffect(() => {
+    if (searchQuery.length < 2) {
+      setSearchResults([]);
+      return;
+    }
+
+    const fetchBooks = async () => {
+      try {
+        const response = await fetch(`/api/search?query=${encodeURIComponent(searchQuery)}`);
+        const data = await response.json();
+        setSearchResults(data);
+      } catch (error) {
+        console.error("Error fetching books:", error);
+      }
+    };
+
+    fetchBooks();
+  }, [searchQuery]);
 
   return (
     <nav className="top-0 left-0 w-full z-50 shadow-md bg-white dark:bg-gray-900 dark:text-white duration-300">
@@ -35,19 +56,35 @@ const Navbar = ({ handleOrderPopup }) => {
         </a>
 
         {/* Desktop Menu */}
-        <div className="hidden sm:flex items-center gap-4">
+        <div className="hidden sm:flex items-center gap-4 relative">
           {/* Search Bar */}
           <div className="relative">
             <input
               type="text"
               placeholder="Search books..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-3 pr-10 py-1 rounded-full border border-gray-300 dark:border-gray-600 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200"
             />
             <FaSearch className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-400 dark:text-gray-300 cursor-pointer" />
+
+            {/* Search Results Dropdown */}
+            {searchResults.length > 0 && (
+              <ul className="absolute mt-1 w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-lg z-50 max-h-60 overflow-y-auto">
+                {searchResults.map((book) => (
+                  <li
+                    key={book.id}
+                    className="px-3 py-2 hover:bg-primary/20 cursor-pointer"
+                  >
+                    {book.title} by {book.author}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
 
           {/* Menu Items */}
-          <ul className="flex items-center gap-4">
+          <ul className="flex items-center gap-4 ml-4">
             {Menu.map((menu) => (
               <li key={menu.id}>
                 <a
@@ -62,8 +99,7 @@ const Navbar = ({ handleOrderPopup }) => {
             {/* Dropdown */}
             <li className="group relative cursor-pointer">
               <a href="/#home" className="flex h-[72px] items-center gap-[2px]">
-                Quick Links{" "}
-                <FaCaretDown className="transition-all duration-200 group-hover:rotate-180" />
+                Quick Links <FaCaretDown className="transition-all duration-200 group-hover:rotate-180" />
               </a>
               <div className="absolute left-0 z-[9999] hidden w-[160px] rounded-md bg-white dark:bg-gray-800 dark:text-white p-2 shadow-lg group-hover:block">
                 <ul className="space-y-2">
@@ -166,5 +202,3 @@ const Navbar = ({ handleOrderPopup }) => {
 };
 
 export default Navbar;
-
-

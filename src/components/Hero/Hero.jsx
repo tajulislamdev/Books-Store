@@ -26,12 +26,10 @@ const Hero = ({ handleOrderPopup }) => {
           className="text-center md:text-left space-y-4"
         >
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent drop-shadow-xl">
-            His Life Will Forever Be Changed </h1>
+            National Library of Bangladesh</h1>
 
           <p className="text-gray-300 text-sm md:text-base lg:text-lg max-w-md mx-auto md:mx-0 leading-relaxed">
-            Discover a journey that will touch your heart and change your
-            perspective forever. Dive into a story filled with emotion,
-            adventure, and inspiration.
+            Step into a world where every moment holds wonder, every challenge sparks growth, and every story leaves an imprint on your heart. Let yourself be moved, inspired, and transformed.
           </p>
 
           <div className="flex justify-center md:justify-start pt-2">
